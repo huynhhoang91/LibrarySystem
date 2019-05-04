@@ -1,0 +1,47 @@
+body 
+{
+    font-family: Tahoma, Geneva, sans-serif;
+    color: #fff;
+}
+
+.signup
+{
+    background: rgba(44, 62, 80, 0.7);
+    padding: 30px;
+    width: 250px;
+    height: 750px;
+    margin-top: 90px;
+    margin-left: 180px;
+    margin: 0 auto;  
+}
+form
+{
+    width: 240px;
+    text-align: center;
+}
+
+input
+{
+    width: 240px;
+    text-align: center;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    font-family: 'Play', sans-serif;
+    font-size: 16px;
+    font-weight: 200px;
+    padding: 10px, 0;
+    transition: border 0.5s;
+    outline: none;
+    color: #fff;
+}
+
+h2
+{
+    color: #000;
+}
+::placeholder
+{
+    color:aliceblue;
+    opacity: 0.8;
+}
