@@ -29,13 +29,19 @@
         String password = request.getParameter("password");
         Class.forName("com.mysql.cj.jdbc.Driver");  // MySQL database connection
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/LibrarySystem?" + "user=root&password=root");    
-        PreparedStatement pst = conn.prepareStatement("SELECT username, password FROM users WHERE username=? and password=?");
+        PreparedStatement pst = conn.prepareStatement("SELECT username, password, is_admin FROM users WHERE username=? and password=?");
         pst.setString(1, username);
         pst.setString(2, password);
         ResultSet rs = pst.executeQuery();                        
         if(rs.next()){
-        	response.sendRedirect("msg.html");
-        	out.println("Valid login credentials");
+        	if(rs.getBoolean("is_admin")){
+        		response.sendRedirect("admin_continue.html");
+        		out.println("Valid login credentials");
+        	}
+        	else{
+        		response.sendRedirect("msg.html");
+        		out.println("Valid login credentials");
+        	}
 
         }
         else{
