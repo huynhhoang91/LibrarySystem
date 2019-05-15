@@ -1,0 +1,33 @@
+@CHARSET "ISO-8859-1";
+* { font-size: 12px; font-family: Tahoma, Geneva, sans-serif }
+
+
+input { 
+	border: 1px solid #ccc 
+}
+
+form
+{
+    width: 240px;
+    text-align: center;
+}
+
+a#currentTab {
+    border-bottom:1px solid #fff;
+}
+
+a { color: black; text-decoration:none;
+    padding:5px; border: 1px solid #aaa;
+}
+
+a:hover { background: #ccc }
+
+td { border: 1px solid #ccc; padding: 3px }
+th { border: 1px solid #ccc; padding: 3px; 
+    background: rgba(44, 62, 80, 0.7); color: white }
+
+.navigator { 
+	border-bottom:1px solid #aaa; 
+	width:300px; 
+	padding:5px
+}
