@@ -30,9 +30,18 @@
 <br> <br> <br>
 
 <form action="delete.jsp" method="post">
-<p>Search:<p><input type='search' name='search_term'></p>
+<p>Search:<p><input type='text' name='search_term'></p>
+<p>Filter:</p><p><select name="type">
+<option value="-1">-Select Filter-</option>
+<option value="booksName">Title</option>
+<option value="author">Author</option>
+<option value="ID">ISBN</option>
+<option value="category">Category</option>
+</select></p>
+<p><input type="submit" value="Search Book" /></p>
 <% 
 	String search = request.getParameter("search_term");  
+	String filter = request.getParameter("type"); 
 %>
 <table>
 <tr>
@@ -45,7 +54,7 @@
 </tr> 
 <%
 
-	List list = librarysystem.LibrarySystem.GetBooks(search);
+	List list = librarysystem.LibrarySystem.GetBooks(search, filter);
 	Long id = 0L;
 	String box = null;
 
