@@ -1,0 +1,78 @@
+body
+{
+    background-color: grey;
+}
+
+.wrapper
+{
+    height: 660px;
+    width: 1500px;
+    margin: auto;
+}
+
+.logo
+{
+    float: left;
+    padding-left: 20px;
+}
+
+.logo img
+{
+    padding-left: 30px;
+    height: 100px;
+    weight: 100px;
+}
+
+header
+{
+    height: 130px;
+    width: 1400px;
+    margin: auto;
+    background-color: black;
+}
+
+section
+{
+    height: 550px;
+    width: 1400px;
+    margin: auto;
+    background-color: grey;
+    background-image: url("../images/1.jpg");
+}
+
+.box
+{
+    height: 300px;
+    width: 450px;
+    background-color: red;
+    margin: 70px auto;
+    opacity: .7;
+}
+
+footer
+{
+    height: 80px;
+    width: 1400px;
+    margin:auto;
+    background-color:black;
+}
+
+li a
+{
+    color: white;
+    text-decoration: none;
+}
+
+nav
+{
+    float: right;
+    word-spacing: 30px;
+    padding: 20px;
+}
+
+nav li
+{
+    display: inline-block;
+    line-height: 70px;
+}
+
