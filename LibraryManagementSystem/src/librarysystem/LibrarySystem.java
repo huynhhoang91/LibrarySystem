@@ -20,7 +20,7 @@ public class LibrarySystem {
          String books = "INSERT INTO Books(ID, booksName, publisher, Copys, borrows, category, price, cover, coverFull)" +
                  "VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
          
-         String authors = "INSERT INTO author(authorName, DOB, gender)" +
+         String authors = "INSERT IGNORE INTO author(authorName, DOB, gender)" +
                  "VALUES (?, ?, ?)";
          
          String writes = "INSERT INTO writes(booksID, authorName, publishingDate)" +
@@ -255,7 +255,7 @@ public static void CheckOutEquipment(String username, String equID, String borro
      List<String> list = new ArrayList<String>();
 
      try {
-   	  String select = "SELECT * FROM Books WHERE " + filter + " LIKE ?";
+   	  String select = "SELECT * FROM (Books JOIN Writes On Books.ID = Writes.booksID) WHERE " + filter + " LIKE ?";
          Class.forName("com.mysql.jdbc.Driver");
          Connection con = DriverManager.getConnection(url, server, password);
 
@@ -267,6 +267,7 @@ public static void CheckOutEquipment(String username, String equID, String borro
          {
             list.add(result.getString("ID"));
             list.add(result.getString("booksName"));
+            list.add(result.getString("authorName"));
             list.add(result.getString("Copys"));
             list.add(result.getString("borrows"));
             list.add(result.getString("category"));
