@@ -3,13 +3,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Books database</title>
-<link rel="stylesheet" href="CSS/admin.css" type="text/css">
+<title>Add Books</title>
+<link href="CSS/style.css" rel="stylesheet" type="text/css">
+<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8" />
 </head>
 <body>
+<div class=wrapper>
 
-<br>
+        <header>
+
+        <div class="logo">
+        <img src="images/logo.png">  
+        </div>  
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="books.html">BOOKS</a></li>
+                    <li><a href="login.html">STUDENT_LOGIN</a></li>
+                    <li><a href="">ADMIN_LOGIN</a></li>
+                    <li><a href="logout.jsp">LOGOUT</a></li>
+                </ul>
+            </nav>
+
+        </header>
+
+<br><br><br>
 
 <div class="navigator">
 <a id="currenttab" href="add.jsp">Add</a>
@@ -80,5 +99,6 @@
 <br>
 <input type="submit" value="submit">
 </form>
+</div>
 </body>
 </html>
