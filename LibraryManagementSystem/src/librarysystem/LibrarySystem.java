@@ -210,6 +210,8 @@ public static void CheckOutBook(String username, String bookID, String borrowDat
         String check = "INSERT INTO BorrowBook(username, booksID, borrowDate, returnDate)" + 
       		  	"VALUES(?, ?, ?, ?)";
 
+        String update = "update books SET borrows = (borrows + 1) WHERE  ID = ?";
+        
         Class.forName("com.mysql.jdbc.Driver");
         Connection con = DriverManager.getConnection(url, server, password);
         PreparedStatement ps = con.prepareStatement(check);
@@ -220,6 +222,12 @@ public static void CheckOutBook(String username, String bookID, String borrowDat
         ps.setString(4, returnDate);
         ps.executeUpdate();
         con.close();
+        
+        PreparedStatement up = con.prepareStatement(update);
+
+        up.setString(1, bookID);
+        up.executeUpdate();
+        
 
     } catch (Exception ex) {
         Logger.getLogger(LibrarySystem.class.getName()).log( 
@@ -231,6 +239,8 @@ public static void CheckOutEquipment(String username, String equID, String borro
     try {
         String check = "INSERT INTO BorrowEquipment(username, equipmentID, borrowDate, returnDate)" + 
       		  	"VALUES(?, ?, ?, ?)";
+        
+        String update = "update equipment SET borrows = (borrows + 1) WHERE  ID = ?";
 
         Class.forName("com.mysql.jdbc.Driver");
         Connection con = DriverManager.getConnection(url, server, password);
@@ -241,6 +251,73 @@ public static void CheckOutEquipment(String username, String equID, String borro
         ps.setString(3, borrowDate);
         ps.setString(4, returnDate);
         ps.executeUpdate();
+        
+        PreparedStatement up = con.prepareStatement(update);
+
+        up.setString(1, equID);
+        up.executeUpdate();
+        
+        con.close();
+
+    } catch (Exception ex) {
+        Logger.getLogger(LibrarySystem.class.getName()).log( 
+           Level.SEVERE, null, ex);
+    }
+}
+//update SQL
+
+public static void returnBooks(String username, String bookID, String borrowDate, String returnDate) {
+    try {
+        String ret = "UPDATE borrowequipment SET returned = 1" + 
+       		 "WHERE username = ? and equipmentID = ? and borrowDate = ? and returnDate = ?";
+        
+        String update = "update equipment SET borrows = (borrows - 1) WHERE  ID = ?";
+
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, server, password);
+        PreparedStatement ps = con.prepareStatement(ret);
+
+        ps.setString(1, username);
+        ps.setString(2, bookID);
+        ps.setString(3, borrowDate);
+        ps.setString(4, returnDate);
+        ps.executeUpdate();
+        
+        PreparedStatement up = con.prepareStatement(update);
+
+        up.setString(1, bookID);
+        up.executeUpdate();
+        
+        con.close();
+
+    } catch (Exception ex) {
+        Logger.getLogger(LibrarySystem.class.getName()).log( 
+           Level.SEVERE, null, ex);
+    }
+}
+
+public static void returnEquipment(String username, String equID, String borrowDate, String returnDate) {
+    try {
+        String ret = "UPDATE borrowequipment SET returned = 1" + 
+       		 "WHERE username = ? and equipmentID = ? and borrowDate = ? and returnDate = ?";
+        
+        String update = "update equipment SET borrows = (borrows - 1) WHERE  ID = ?";
+
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, server, password);
+        PreparedStatement ps = con.prepareStatement(ret);
+
+        ps.setString(1, username);
+        ps.setString(2, equID);
+        ps.setString(3, borrowDate);
+        ps.setString(4, returnDate);
+        ps.executeUpdate();
+        
+        PreparedStatement up = con.prepareStatement(update);
+
+        up.setString(1, equID);
+        up.executeUpdate();
+        
         con.close();
 
     } catch (Exception ex) {
