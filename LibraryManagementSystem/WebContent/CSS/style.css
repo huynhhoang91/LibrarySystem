@@ -5,8 +5,8 @@ body
 
 .wrapper
 {
-    height: 660px;
-    width: 1500px;
+    height: 1000px;
+    background-color: grey;
     margin: auto;
 }
 
@@ -63,7 +63,7 @@ li a
     text-decoration: none;
 }
 
-nav
+/*nav
 {
     float: right;
     word-spacing: 30px;
@@ -74,7 +74,7 @@ nav li
 {
     display: inline-block;
     line-height: 70px;
-}
+}*/
 
 input { 
 	border: 1px solid #ccc 

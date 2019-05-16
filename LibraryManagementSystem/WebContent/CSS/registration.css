@@ -2,6 +2,12 @@ body
 {
     background-color: grey;
 }
+
+.wrapper
+{
+	height: 1000px;
+	background-color: grey;
+}
 .logo
 {
     float: left;
@@ -27,7 +33,7 @@ header
     margin: auto;
     background-color: black;
 }
-nav
+/*nav
 {
     float: right;
     word-spacing: 30px;
@@ -38,7 +44,7 @@ nav li
 {
     display: inline-block;
     line-height: 70px;
-}
+}*/
 
 li a
 {
