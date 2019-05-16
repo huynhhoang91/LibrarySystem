@@ -46,6 +46,7 @@
 <table>
 <tr>
 <th>Title</th>
+<th>Author</th>
 <th>Copies</th>
 <th>Borrowed</th>
 <th>Category</th>
@@ -63,7 +64,7 @@
 	while (it.hasNext()) {
     	id = Long.parseLong(it.next());
     	out.print("<tr>");
-    	for (int i = 0; i < 6; i++) {
+    	for (int i = 0; i < 7; i++) {
         	out.print("<td>");
         	out.print(it.next());
         	out.print("</td>");
