@@ -250,12 +250,12 @@ public static void CheckOutEquipment(String username, String equID, String borro
 }
 
 //projection SQL
- public static List GetBooks(String search_term) {
+ public static List GetBooks(String search_term, String filter) {
 
      List<String> list = new ArrayList<String>();
 
      try {
-   	  String select = "SELECT * FROM Books WHERE booksName LIKE ?";
+   	  String select = "SELECT * FROM Books WHERE " + filter + " LIKE ?";
          Class.forName("com.mysql.jdbc.Driver");
          Connection con = DriverManager.getConnection(url, server, password);
 
