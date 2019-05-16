@@ -39,22 +39,22 @@ create table Admins(
 );
 
 create table Writes(
-	booksID char(13), FOREIGN KEY (booksID) REFERENCES Books(ID),
-    authorName varchar(255), FOREIGN KEY (authorName) REFERENCES Author(authorName),
+	booksID char(13), FOREIGN KEY (booksID) REFERENCES Books(ID) ON DELETE CASCADE ON UPDATE CASCADE,
+    authorName varchar(255), FOREIGN KEY (authorName) REFERENCES Author(authorName) ON DELETE CASCADE ON UPDATE CASCADE,
     publishingDate date
 );
 
 create table BorrowBook(
-	username  varchar(255) binary, FOREIGN KEY (username) REFERENCES Users(username),
-    booksID char(13), FOREIGN KEY (booksID) REFERENCES Books(ID),
+	username  varchar(255) binary, FOREIGN KEY (username) REFERENCES Users(username) ON DELETE CASCADE ON UPDATE CASCADE,
+    booksID char(13), FOREIGN KEY (booksID) REFERENCES Books(ID) ON DELETE CASCADE ON UPDATE CASCADE,
     borrowDate date,
     returnDate date,
     returned boolean default 0 
 );
 
 create table BorrowEquipment(
-	username  varchar(255)binary, FOREIGN KEY (username) REFERENCES Users(username),
-    equipmentID int, FOREIGN KEY (equipmentID) REFERENCES Equipment(ID),
+	username  varchar(255)binary, FOREIGN KEY (username) REFERENCES Users(username) ON DELETE CASCADE ON UPDATE CASCADE,
+    equipmentID int, FOREIGN KEY (equipmentID) REFERENCES Equipment(ID) ON DELETE CASCADE ON UPDATE CASCADE,
 	borrowDate date,
     returnDate date,
     returned boolean default 0 

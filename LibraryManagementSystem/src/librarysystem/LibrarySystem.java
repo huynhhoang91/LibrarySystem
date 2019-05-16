@@ -365,7 +365,8 @@ public static void returnEquipment(String username, String equID, String borrowD
  
  public static void Delete(String id) {
      try {
-         String delete = "DELETE from Books WHERE ID = ?";
+         String delete = "DELETE from Books WHERE ISBN = ?";
+         String delete2 = "DELETE from writes WHERE booksID = ?";
 
          Class.forName("com.mysql.jdbc.Driver");
          Connection con = DriverManager.getConnection(url, server, password);
@@ -373,6 +374,12 @@ public static void returnEquipment(String username, String equID, String borrowD
 
          ps.setString(1, id);
          ps.executeUpdate();
+         
+         PreparedStatement ps2 = con.prepareStatement(delete2);
+
+         ps2.setString(1, id);
+         ps2.executeUpdate();
+         
          con.close();
 
      } catch (Exception ex) {
