@@ -205,8 +205,10 @@ public static void InsertEquipment(String ID, String equName, String number) {
 	                        Level.SEVERE, null, ex);
 	   }
 	}
-public static void CheckOutBook(String username, String bookID, String borrowDate, String returnDate) {
+public static void CheckOutBook(String username, String bookID, java.util.Date borrowDate, java.util.Date returnDate) {
     try {
+    	java.sql.Date bDate=new java.sql.Date(borrowDate.getTime());
+    	java.sql.Date rDate=new java.sql.Date(returnDate.getTime());
         String check = "INSERT INTO BorrowBook(username, booksID, borrowDate, returnDate)" + 
       		  	"VALUES(?, ?, ?, ?)";
 
@@ -218,16 +220,16 @@ public static void CheckOutBook(String username, String bookID, String borrowDat
 
         ps.setString(1, username);
         ps.setString(2, bookID);
-        ps.setString(3, borrowDate);
-        ps.setString(4, returnDate);
+        ps.setDate(3, bDate);
+        ps.setDate(4, rDate);
         ps.executeUpdate();
-        con.close();
+
         
         PreparedStatement up = con.prepareStatement(update);
 
         up.setString(1, bookID);
         up.executeUpdate();
-        
+        con.close();
 
     } catch (Exception ex) {
         Logger.getLogger(LibrarySystem.class.getName()).log( 
@@ -266,12 +268,12 @@ public static void CheckOutEquipment(String username, String equID, String borro
 }
 //update SQL
 
-public static void returnBooks(String username, String bookID, String borrowDate, String returnDate) {
+public static void returnBooks(String username, String bookID) {
     try {
-        String ret = "UPDATE borrowequipment SET returned = 1" + 
-       		 "WHERE username = ? and equipmentID = ? and borrowDate = ? and returnDate = ?";
+        String ret = "UPDATE BorrowBook SET returned = 1" + 
+       		 "WHERE username = ? and booksID = ?" ;
         
-        String update = "update equipment SET borrows = (borrows - 1) WHERE  ID = ?";
+        String update = "update Books SET borrows = (borrows - 1) WHERE  ID = ?";
 
         Class.forName("com.mysql.jdbc.Driver");
         Connection con = DriverManager.getConnection(url, server, password);
@@ -279,8 +281,6 @@ public static void returnBooks(String username, String bookID, String borrowDate
 
         ps.setString(1, username);
         ps.setString(2, bookID);
-        ps.setString(3, borrowDate);
-        ps.setString(4, returnDate);
         ps.executeUpdate();
         
         PreparedStatement up = con.prepareStatement(update);
@@ -360,12 +360,49 @@ public static void returnEquipment(String username, String equID, String borrowD
      }
          return list;
  }
+ 
+ public static List GetUserBooks(String username) {
+
+     List<String> list = new ArrayList<String>();
+
+     try {
+   	  String select = "SELECT * FROM (Books JOIN Writes On Books.ID = Writes.booksID "
+   	  		+ "JOIN BorrowBook On Books.ID = BorrowBook.booksID) WHERE username = ?";
+         Class.forName("com.mysql.jdbc.Driver");
+         Connection con = DriverManager.getConnection(url, server, password);
+
+         PreparedStatement ps = con.prepareStatement(select);
+         ps.setString(1, username);
+         ResultSet result = ps.executeQuery();   
+         
+         while(result.next())
+         {
+            list.add(result.getString("ID"));
+            list.add(result.getString("booksName"));
+            list.add(result.getString("authorName"));
+            list.add(result.getString("Copys"));
+            list.add(result.getString("borrows"));
+            list.add(result.getString("category"));
+            list.add(result.getString("price"));
+            list.add(result.getString("cover"));
+            list.add(result.getString("borrowDate"));
+            list.add(result.getString("returnDate"));
+         } 
+
+         con.close();
+
+     } catch (Exception ex) {
+         Logger.getLogger(LibrarySystem.class.getName()).log( 
+                          Level.SEVERE, null, ex);
+     }
+         return list;
+ }
 
 //Delete SQL
  
  public static void Delete(String id) {
      try {
-         String delete = "DELETE from Books WHERE ISBN = ?";
+         String delete = "DELETE from Books WHERE ID = ?";
          String delete2 = "DELETE from writes WHERE booksID = ?";
 
          Class.forName("com.mysql.jdbc.Driver");
