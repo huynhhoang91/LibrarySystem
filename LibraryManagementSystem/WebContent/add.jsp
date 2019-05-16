@@ -22,22 +22,33 @@
   String category = request.getParameter("category");
   String price = request.getParameter("price");
   String cover = request.getParameter("cover");
+  String coverFull = request.getParameter("coverFull");
+  String author = request.getParameter("authorName");
+  String publisher = request.getParameter("publisher");
+  String publishingDate = request.getParameter("publishingDate");
+  
   if (isbn != null && title != null 
           && copies != null && category!= null 
           && price!= null && cover!= null ) {
-	  librarysystem.LibrarySystem.Insert(isbn, title, copies, "0", category, price, cover);
+	  librarysystem.LibrarySystem.InsertBook(isbn, title, author, copies, "0", category, price, publisher,publishingDate, cover, coverFull);
   }
+  
 %>
 
 <br> <br> <br>
-
 <form method="post" action="add.jsp">
+
+
 <table>
+
 <tr>    
-<td>ISBN</td><td><input type="text" name="id"></td>
+<td>ISBN*<td><input type="text" maxlength="13" name="id"></td>
 </tr>
 <tr>
-<td>Title</td><td><input type="text" name="title"></td>
+<td>Title*</td><td><input type="text" name="title"></td>
+</tr>
+<tr>    
+<td>Author*</td><td><input type="text" name="authorName"></td>
 </tr>
 <tr>
 <td>Copies</td><td> <input type="text" name="copies"></td>
@@ -49,9 +60,22 @@
 <td>Price</td><td> <input type="text" name="price"></td>
 </tr>
 <tr>
-<td>Description</td><td> <input type="text" name="cover"></td>
+<td>Publisher</td><td><input type="text" name="publisher"></td>
 </tr>
+<tr>
+<td>Publishing Date</td><td> <input type="text" name="publishingDate"></td>
+</tr>
+<tr>
+<td>CoverImage</td><td> <input type="text" name="cover"></td>
+</tr>
+<tr>
+<td>CoverImage Large</td><td> <input type="text" name="coverFull"></td>
+</tr>
+
+
+
 </table>
+
 
 <br>
 <input type="submit" value="submit">

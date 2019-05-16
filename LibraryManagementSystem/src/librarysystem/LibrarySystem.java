@@ -8,29 +8,53 @@ import java.util.logging.Logger;
 
 
 public class LibrarySystem {
-
-  static final String url = "jdbc:mysql://localhost:3306/LibrarySystem";
-
-  public static void Insert(String isbn, String title, 
-          String copies, String borrowed, String category, String price, String cover) {
+	
+//Change for different server
+  static final String url = "jdbc:mysql://localhost:3306/library";
+  static final String server = "root";
+  static final String password = "39043904"; 
+  
+  public static void InsertBook(String isbn, String title, String author,  String copies, String borrowed,
+             String category, String price, String publisher, String publishingDate, String cover ,String coverFull) {
       try {
 
-          String insert = "INSERT INTO Books(ID, booksName, Copys, borrows, category, price, cover)" +
-                  "VALUES (?, ?, ?, ?, ?, ?, ?)";
+          String books = "INSERT INTO Books(ID, booksName, publisher, Copys, borrows, category, price, cover, coverFull)" +
+                  "VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
+          
+          String authors = "INSERT INTO author(authorName, DOB, gender)" +
+                  "VALUES (?, ?, ?)";
+          
+          String writes = "INSERT INTO writes(booksID, authorName, publishingDate)" +
+                  "VALUES (?, ?, ?)";
 
           Class.forName("com.mysql.jdbc.Driver");
-          Connection con = DriverManager.getConnection(url, "root", "root");
+          Connection con = DriverManager.getConnection(url, server, password);
  
-          PreparedStatement ps = con.prepareStatement(insert);
+          PreparedStatement ps = con.prepareStatement(books);
 
           ps.setString(1, isbn);
           ps.setString(2, title);
-          ps.setString(3, copies);
-          ps.setString(4, borrowed);
-          ps.setString(5, category);
-          ps.setString(6, price);
-          ps.setString(7, cover);
+          ps.setString(3, publisher);
+          ps.setString(4, copies);
+          ps.setString(5, borrowed);
+          ps.setString(6, category);
+          ps.setString(7, price);
+          ps.setString(8, cover);
+          ps.setString(9, coverFull);
           ps.executeUpdate();
+          
+          PreparedStatement ps2 = con.prepareStatement(authors);
+          ps2.setString(1,author);
+          ps2.setString(2,"2019-10-1");
+          ps2.setString(3,"x");
+          ps2.executeUpdate();
+          
+          PreparedStatement ps3 = con.prepareStatement(writes);
+          ps3.setString(1,isbn);
+          ps3.setString(2,author);
+          ps3.setString(3,publishingDate);
+          ps3.executeUpdate();
+          
           con.close();
 
       } catch (Exception ex) {
@@ -46,7 +70,7 @@ public class LibrarySystem {
       try {
     	  String select = "SELECT * FROM Books WHERE booksName LIKE ?";
           Class.forName("com.mysql.jdbc.Driver");
-          Connection con = DriverManager.getConnection(url, "root", "root");
+          Connection con = DriverManager.getConnection(url, server, password);
 
           PreparedStatement ps = con.prepareStatement(select);
           ps.setString(1, "%" + search_term + "%");
@@ -77,7 +101,7 @@ public class LibrarySystem {
           String delete = "DELETE from Books WHERE ID = ?";
 
           Class.forName("com.mysql.jdbc.Driver");
-          Connection con = DriverManager.getConnection(url, "root", "root");
+          Connection con = DriverManager.getConnection(url, server, password);
           PreparedStatement ps = con.prepareStatement(delete);
 
           ps.setString(1, id);
@@ -96,7 +120,7 @@ public class LibrarySystem {
         		  	"VALUES(?, ?, ?, ?)";
 
           Class.forName("com.mysql.jdbc.Driver");
-          Connection con = DriverManager.getConnection(url, "root", "root");
+          Connection con = DriverManager.getConnection(url, server, password);
           PreparedStatement ps = con.prepareStatement(check);
 
           ps.setString(1, username);
