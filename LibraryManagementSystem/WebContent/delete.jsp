@@ -13,23 +13,7 @@
 <body>
 <div class=wrapper>
 
-        <header>
-
-        <div class="logo">
-        <img src="images/logo.png">  
-        </div>  
-
-            <nav>
-                <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="books.html">BOOKS</a></li>
-                    <li><a href="login.html">STUDENT_LOGIN</a></li>
-                    <li><a href="">ADMIN_LOGIN</a></li>
-                    <li><a href="logout.jsp">LOGOUT</a></li>
-                </ul>
-            </nav>
-
-        </header>
+<%@ include file="header.html" %>
 <%
 	Enumeration names = request.getParameterNames();
     while (names.hasMoreElements()) {
