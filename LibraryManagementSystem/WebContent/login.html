@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Online Library Management System</title>
-    <link href="CSS/style.css" rel="stylesheet" type="text/css">
+	<title>Student Login</title>
     <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8" />
+    <link href="CSS/student_login.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -19,8 +18,7 @@
 </head>
 
 <body>
-    <div class=wrapper>
-
+<div class="wrapper">
 <header>
     
 
@@ -43,21 +41,22 @@
         </div>
     </nav>
 </header>
-
-        <section>
-            <br><br>
-
-            <div class="box">
-                <h1 style="color: white; text-align: center">Welcome to library!</h1><br>
-            </div>
-            
-        </section>
-
-   
-
+	<section>
+        <div class="box">
+            <form method="post" action="Login_Form.jsp">
+                <h2>Log In</h2>
+                <input class="form-control" type="text" name="username" placeholder="Username" required=""><br>
+                <input class="form-control" type="password" name="password" placeholder="Password" required=""/><br>
+                <!-- <a href="msg.html"><input type="button" value="Log In"/></a><br><br> -->
+                <p class="submit"><input 
+                    class="btn btn-default" 
+                    type="submit" 
+                    value="Login" 
+                    style="color: black; width: 70px; height: 30px"></p>
+                Don't have account?<a href="signup.html">&nbsp;Sign Up</a>
+            </form>
+        </div>
+	</section>
     </div>
-
-</body>
-
-
+    </body>
 </html>
