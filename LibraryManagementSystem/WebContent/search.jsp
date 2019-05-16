@@ -14,23 +14,7 @@
 <body>
 <div class=wrapper>
 
-        <header>
-
-        <div class="logo">
-        <img src="images/logo.png">  
-        </div>  
-
-            <nav>
-                <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="books.html">BOOKS</a></li>
-                    <li><a href="login.html">STUDENT_LOGIN</a></li>
-                    <li><a href="">ADMIN_LOGIN</a></li>
-                    <li><a href="logout.jsp">LOGOUT</a></li>
-                </ul>
-            </nav>
-
-        </header>
+<%@ include file="header.html" %>
 <%
 	String username = (String)session.getAttribute("username");
 
@@ -68,8 +52,9 @@
 <p>Search Type:</p><p><select name="type">
 <option value="-1">-Select Filter-</option>
 <option value="booksName">title</option>
-<option value="author">author</option>
+<option value="authorName">Author</option>
 <option value="ID">ISBN</option>
+<option value="category">Category</option>
 </select></p>
 <p><input type="submit" value="Search Book" /></p>
 <% 
