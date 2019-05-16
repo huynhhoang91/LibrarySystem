@@ -13,21 +13,7 @@
 </head>
 <body>
 
-<header>
-        <div class="logo">
-            <img src="images/logo.png">           
-        </div>  
-
-        <nav>
-            <ul>
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="">BOOKS</a></li>
-                <li><a href="Login_Form.jsp">STUDENT_LOGIN</a></li>
-                <li><a href="Admin_Login.jsp">ADMIN_LOGIN</a></li>
-                <li><a href="">FEEDBACK</a></li>             
-            </ul>
-        </nav>
-</header>
+<%@ include file="header.html" %>
 
 <section>
     <div class="box">
