@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Student Login</title>
+	<title>Admin Login</title>
     <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8" />
     <link href="CSS/student_login.css" rel="stylesheet" type="text/css">
 
@@ -13,24 +13,11 @@
 </head>
 
 <body>
-	<header>
-        <div class="logo">
-            <img src="images/logo.png">           
-        </div>  
-        <nav class="Navbar Navbar-Inverse">
-            <ul>
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="">BOOKS</a></li>
-                <li><a href="Login_Form.jsp">STUDENT_LOGIN</a></li>
-                <li><a href="Admin_Login.jsp">ADMIN_LOGIN</a></li>
-                <li><a href="">FEEDBACK</a></li>                
-            </ul>
-        </nav>
-	</header>
+	<%@ include file="header.html" %>
 	<section>
         <div class="box">
             <form method="post" action="Admin_Login.jsp">
-                <h2>Log In</h2>
+                <h2> Admin Log In</h2>
                 <input class="form-control" type="text" name="username" placeholder="Username" required=""><br>
                 <input class="form-control" type="password" name="password" placeholder="Password" required=""/><br>
                 <!-- <a href="msg.html"><input type="button" value="Log In"/></a><br><br> -->
