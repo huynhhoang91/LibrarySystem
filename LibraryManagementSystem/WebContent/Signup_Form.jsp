@@ -33,25 +33,15 @@
 <%@ page import ="java.sql.*" %>
 
 <%
-	try{
         String username = request.getParameter("username");   
         String password = request.getParameter("password");
         String Cpassword = request.getParameter("Cpassword");
         String firstName = request.getParameter("first");
         String lastName = request.getParameter("last");
         String email = request.getParameter("email");
-        Class.forName("com.mysql.cj.jdbc.Driver");  // MySQL database connection
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/LibrarySystem?" + "user=root&password=root");    
-        PreparedStatement pst = conn.prepareStatement("INSERT INTO users(username, password, firstName, lastName, email) VALUES(?,?,?,?,?)");
-        pst.setString(1, username);
-        pst.setString(2, password);
-        pst.setString(3, firstName);
-        pst.setString(4, lastName);
-        pst.setString(5, email);
-        pst.executeUpdate();
+        
+        librarysystem.LibrarySystem.signup(username,password,firstName,lastName,email);
+        
         out.println("Successfully Signed up! Please Login.");
-	}
-	catch(SQLException e){       
-    out.println("Something went wrong !! Please try again");       
-	}  
+
 %>

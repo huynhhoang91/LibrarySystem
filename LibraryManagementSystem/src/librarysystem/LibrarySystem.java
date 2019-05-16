@@ -118,7 +118,7 @@ public class LibrarySystem {
 	       Class.forName("com.mysql.jdbc.Driver");
 	       Connection con = DriverManager.getConnection(url, server, password);
 	       
-	       PreparedStatement pst = con.prepareStatement("INSERT INTO users(username, password, firstName, lastName, email) VALUES(?,?,?,?,?)");
+	       PreparedStatement pst = con.prepareStatement("INSERT INTO users(username, userPassword, firstName, lastName, email) VALUES(?,?,?,?,?)");
 	        pst.setString(1, username);
 	        pst.setString(2, apassword);
 	        pst.setString(3, firstName);
@@ -233,10 +233,58 @@ public class LibrarySystem {
       }
           return list;
   }
+  
+  public static List GetEquipments(String search_term) {
+
+      List<String> list = new ArrayList<String>();
+
+      try {
+    	  String select = "SELECT * FROM equipment WHERE equipName LIKE ?";
+          Class.forName("com.mysql.jdbc.Driver");
+          Connection con = DriverManager.getConnection(url, server, password);
+
+          PreparedStatement ps = con.prepareStatement(select);
+          ps.setString(1, "%" + search_term + "%");
+          ResultSet result = ps.executeQuery();   
+          
+          while(result.next())
+          {
+             list.add(result.getString("ID"));
+             list.add(result.getString("equipName"));
+             list.add(result.getString("totalNumber"));
+             list.add(result.getString("borrows"));
+          } 
+
+          con.close();
+
+      } catch (Exception ex) {
+          Logger.getLogger(LibrarySystem.class.getName()).log( 
+                           Level.SEVERE, null, ex);
+      }
+          return list;
+  }
 
 // Delete SQL
   
-  public static void Delete(String id) {
+  public static void DeleteBook(String id) {
+      try {
+          String delete = "DELETE from Books WHERE ID = ?";
+
+          Class.forName("com.mysql.jdbc.Driver");
+          Connection con = DriverManager.getConnection(url, server, password);
+          PreparedStatement ps = con.prepareStatement(delete);
+
+          ps.setString(1, id);
+          ps.executeUpdate();
+          con.close();
+
+      } catch (Exception ex) {
+          Logger.getLogger(LibrarySystem.class.getName()).log( 
+             Level.SEVERE, null, ex);
+      }
+  }
+  
+  public static void DeleteEquipment(String id) {
       try {
           String delete = "DELETE from Books WHERE ID = ?";
 
