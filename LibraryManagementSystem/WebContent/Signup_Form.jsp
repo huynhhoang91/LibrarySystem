@@ -1,36 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link href="CSS\signup.css" rel="stylesheet" type="text/css" />
-    <title>Untitled Document</title>
-    </head>
-    <body>
-        <div class="signup">
-            <form method="post" action="Signup_Form.jsp">
-                <h2>Sign Up</h2>
-                <h3>Enter a Username</h3><br>
-                <input type="text" name="username" placeholder="Username"/><br><br>
-                <h3>Enter a Password</h3>
-                <input type="password" name="password" placeholder="Password"><br><br>
-                <h3>Confirm a Password</h3>
-                <input type="password" name="Cpassword" placeholder="Confirm Password"><br><br>
-                <h3>First Name</h3>
-                <input type="text" name="first" placeholder="First Name"><br><br>
-                <h3>Last Name</h3>
-                <input type="text" name="last" placeholder="Last Name"><br><br>
-                <h3>Email</h3>
-                <input type="text" name="email" placeholder="abc@abc.asb"><br><br>                   
-                <p class="submit"><input type="submit"   value="Signup"></p>
-                Already have an account?<a href="Login_Form.jsp">&nbsp;Log In</a>
-            </form>
-        </div>
-	</body>
-</html> -->
+	<title>Student Registration</title>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8" />
+    <link href="CSS/registration.css" rel="stylesheet" type="text/css">
 
-<%@ page import ="java.sql.*" %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<header>
+        <div class="logo">
+            <img src="images/logo.png">           
+        </div>  
+
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="">BOOKS</a></li>
+                <li><a href="Login_Form.jsp">STUDENT_LOGIN</a></li>
+                <li><a href="Admin_Login.jsp">ADMIN_LOGIN</a></li>
+                <li><a href="">FEEDBACK</a></li>             
+            </ul>
+        </nav>
+</header>
+
+<section>
+    <div class="box">
+        <form method="post" action="Signup_Form.jsp">
+            <h2>Sign Up</h2>
+
+            <h3>Enter a Username</h3>
+            <input class="form-control" type="text" name="username" placeholder="Username" required=""/>
+            <h3>Enter a Password</h3>
+            <input class="form-control" type="password" name="password" placeholder="Password" required="">
+            <h3>Confirm a Password</h3>
+            <input class="form-control" type="password" name="Cpassword" placeholder="Confirm Password" required="">
+            <h3>First Name</h3>
+            <input class="form-control" type="text" name="first" placeholder="First Name" required="">
+            <h3>Last Name</h3>
+            <input class="form-control" type="text" name="last" placeholder="Last Name" required="">
+            <h3>Email</h3>
+            <input class="form-control" type="text" name="email" placeholder="abc@abc.asb" required=""><br>
+
+<%@ page import ="java.util.*" %>
 
 <%
         String username = request.getParameter("username");   
@@ -39,9 +56,21 @@
         String firstName = request.getParameter("first");
         String lastName = request.getParameter("last");
         String email = request.getParameter("email");
-        
-        librarysystem.LibrarySystem.signup(username,password,firstName,lastName,email);
-        
-        out.println("Successfully Signed up! Please Login.");
-
+        if (username != null && password != null 
+                && Cpassword!= null && firstName!= null 
+                && lastName!= null && email!= null ) {
+        	librarysystem.LibrarySystem.signup(username, password, firstName, lastName, email);  
+        	out.println("Successfully Signed up! Please Login.");
+        }
 %>
+				 <p class="submit"><input 
+                class="btn btn-default" 
+                type="submit" 
+                value="Signup" 
+                style="color: black; width: 70px; height: 30px"></p>
+            Already have an account?<a href="login.html">&nbsp;Log In</a>
+            </form>
+        </div>
+</section>
+</body>
+</html>
