@@ -1,0 +1,121 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html >
+<html>
+<%@page import="java.util.*" %>
+<%@page import="java.text.DateFormat" %>
+<%@page import="java.text.SimpleDateFormat" %>
+
+<html>
+<head>
+<title>Search Books</title>
+    <link href="CSS/style.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8" />
+<body>
+<div class=wrapper>
+
+        <header>
+
+        <div class="logo">
+        <img src="images/logo.png">  
+        </div>  
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="books.html">BOOKS</a></li>
+                    <li><a href="login.html">STUDENT_LOGIN</a></li>
+                    <li><a href="">ADMIN_LOGIN</a></li>
+                    <li><a href="logout.jsp">LOGOUT</a></li>
+                </ul>
+            </nav>
+
+        </header>
+<%
+	String username = (String)session.getAttribute("username");
+
+	int noOfDays = 14; //i.e two weeks
+	Calendar calendar = Calendar.getInstance();
+	Date bDate = calendar.getTime();
+	//SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+	calendar.add(Calendar.DAY_OF_YEAR, noOfDays);
+	Date rDate = calendar.getTime();
+	//String returnDate = dateFormat.format(rDate);
+
+	out.println("Welcome " + username + "!");
+	Enumeration names = request.getParameterNames();
+	if(names.hasMoreElements()){
+		String nope = (String)names.nextElement();
+	}
+	while (names.hasMoreElements()) {
+    	String name = (String) names.nextElement();
+    	StringBuffer sb = new StringBuffer(name);
+    	sb.deleteCharAt(0);
+    	librarysystem.LibrarySystem.CheckOutBook(username, sb.toString(), bDate, rDate);
+	}
+%>
+<br><br><br>
+
+<div class="navigator">
+<a href="search.jsp">Search</a>
+<a id="currenttab" href="user_books.jsp">My Books</a>
+</div>
+
+<br> <br> <br>
+
+<form action="search.jsp" method="post">
+<p>Search:<p><input type='search' name='search_term'></p>
+<p>Search Type:</p><p><select name="type">
+<option value="-1">-Select Filter-</option>
+<option value="booksName">title</option>
+<option value="author">author</option>
+<option value="ID">ISBN</option>
+</select></p>
+<p><input type="submit" value="Search Book" /></p>
+<% 
+	String search = request.getParameter("search_term");  
+	String filter = request.getParameter("type"); 
+%>
+<table>
+<tr>
+<th>Title</th>
+<th>Author</th>
+<th>Copies</th>
+<th>Borrowed</th>
+<th>Category</th>
+<th>Price</th>
+<th>Cover</th>
+</tr>
+<%
+
+	List list = librarysystem.LibrarySystem.GetBooks(search, filter);
+	Long id = 0L;
+	String box = null;
+
+	Iterator<String> it = list.iterator();
+
+	while (it.hasNext()) {
+    	id = Long.parseLong(it.next());
+    	out.print("<tr>");
+    	for (int i = 0; i < 7; i++) {
+        	out.print("<td>");
+        	out.print(it.next());
+        	out.print("</td>");
+	}
+	out.print("<td>");
+	box = "<input name=r" + id + " type='checkbox'>";
+	out.print(box);
+	out.print("</td>");
+	out.print("</tr>");
+	}
+%>
+ 
+</table>
+ 
+<br>
+<input type="submit" value="Check Out">
+
+</form>
+ </div>
+</body>
+</html>
