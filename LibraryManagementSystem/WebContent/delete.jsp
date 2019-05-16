@@ -5,11 +5,31 @@
 
 <html>
 <head>
-<title>Delete</title>
-<link rel="stylesheet" href="CSS/admin.css" type="text/css">
-        
+<title>Delete Books</title>
+<link href="CSS/style.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8" />
+
 </head>
 <body>
+<div class=wrapper>
+
+        <header>
+
+        <div class="logo">
+        <img src="images/logo.png">  
+        </div>  
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="books.html">BOOKS</a></li>
+                    <li><a href="login.html">STUDENT_LOGIN</a></li>
+                    <li><a href="">ADMIN_LOGIN</a></li>
+                    <li><a href="logout.jsp">LOGOUT</a></li>
+                </ul>
+            </nav>
+
+        </header>
 <%
 	Enumeration names = request.getParameterNames();
     while (names.hasMoreElements()) {
@@ -20,7 +40,7 @@
     }
 
 %>
-<br>
+<br><br><br>
 
 <div class="navigator">
 <a href="add.jsp">Add</a>
@@ -34,7 +54,7 @@
 <p>Filter:</p><p><select name="type">
 <option value="-1">-Select Filter-</option>
 <option value="booksName">Title</option>
-<option value="author">Author</option>
+<option value="authorName">Author</option>
 <option value="ID">ISBN</option>
 <option value="category">Category</option>
 </select></p>
@@ -83,6 +103,6 @@
 <input type="submit" value="Delete">
 
 </form>
- 
+</div>
 </body>
 </html>
