@@ -51,19 +51,19 @@
 <td>Author*</td><td><input type="text" name="authorName"></td>
 </tr>
 <tr>
-<td>Copies</td><td> <input type="text" name="copies"></td>
+<td>Copies</td><td> <input type="text" name="copies" ></td>
 </tr>
 <tr>
 <td>Category</td><td> <input type="text" name="category"></td>
 </tr>
 <tr>
-<td>Price</td><td> <input type="text" name="price"></td>
+<td>Price</td><td> <input type="text" name="price" placeholder="9.99"></td>
 </tr>
 <tr>
 <td>Publisher</td><td><input type="text" name="publisher"></td>
 </tr>
 <tr>
-<td>Publishing Date</td><td> <input type="text" name="publishingDate"></td>
+<td>Publishing Date</td><td> <input type="text" name="publishingDate" placeholder="2019-10-1"></td>
 </tr>
 <tr>
 <td>CoverImage</td><td> <input type="text" name="cover"></td>
