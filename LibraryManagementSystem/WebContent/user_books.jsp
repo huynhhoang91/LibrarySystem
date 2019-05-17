@@ -2,27 +2,14 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html >
 <html>
+
 <%@page import="java.util.*" %>
-
-
-<html>
-<head>
-<title>My Books</title>
-<link href="CSS/style.css" rel="stylesheet" type="text/css">
-<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8" />      
-</head>
-<body>
-<div class=wrapper>
 
 <%@ include file="header.html" %>
 <%
 	String username = (String)session.getAttribute("username");
 
-	out.println("Welcome " + username + "!");
 	Enumeration names = request.getParameterNames();
-	if(names.hasMoreElements()){
-		String nope = (String)names.nextElement();
-	}
 	while (names.hasMoreElements()) {
     	String name = (String) names.nextElement();
     	StringBuffer sb = new StringBuffer(name);
@@ -30,12 +17,6 @@
     	librarysystem.LibrarySystem.returnBooks(username, sb.toString());
 	}
 %>
-<br><br><br>
-
-<div class="navigator">
-<a href="search.jsp">Search</a>
-<a id="currenttab" href="user_books.jsp">My Books</a>
-</div>
 
 <br> <br> <br>
 
@@ -51,18 +32,19 @@
 <th>Cover</th>
 <th>Date Borrowed</th>
 <th>Date To Return By</th>
+<th>Returned?</th>
 </tr>
 <%
 	List list = librarysystem.LibrarySystem.GetUserBooks(username);
-	Long id = 0L;
+	String id = "";
 	String box = null;
 
 	Iterator<String> it = list.iterator();
 
 	while (it.hasNext()) {
-    	id = Long.parseLong(it.next());
+    	id = it.next();
     	out.print("<tr>");
-    	for (int i = 0; i < 9; i++) {
+    	for (int i = 0; i < 10; i++) {
         	out.print("<td>");
         	out.print(it.next());
         	out.print("</td>");
@@ -81,6 +63,5 @@
 <input type="submit" value="Return">
 
 </form>
-</div> 
 </body>
 </html>
