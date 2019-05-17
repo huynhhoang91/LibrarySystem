@@ -44,7 +44,6 @@ section
 {
     height: 300px;
     width: 450px;
-    background-color: red;
     margin: 70px auto;
     opacity: .7;
 }
@@ -63,18 +62,8 @@ li a
     text-decoration: none;
 }
 
-/*nav
-{
-    float: right;
-    word-spacing: 30px;
-    padding: 20px;
+z  line-height: 70px;
 }
-
-nav li
-{
-    display: inline-block;
-    line-height: 70px;
-}*/
 
 input { 
 	border: 1px solid #ccc 
@@ -86,7 +75,7 @@ form
     text-align: center;
 }
 
-a#currentTab {
+/* a#currentTab {
     border-bottom:1px solid #fff;
 }
 
@@ -94,7 +83,7 @@ a { color: black; text-decoration:none;
     padding:5px; border: 1px solid #aaa;
 }
 
-a:hover { background: #ccc }
+a:hover { background: #ccc } */
 
 td { border: 1px solid #ccc; padding: 3px }
 th { border: 1px solid #ccc; padding: 3px; 
