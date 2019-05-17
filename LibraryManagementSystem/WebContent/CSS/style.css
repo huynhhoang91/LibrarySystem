@@ -1,12 +1,12 @@
 body
 {
-    background-color: grey;
+    background-color: white;
 }
 
 .wrapper
 {
     height: 1000px;
-    background-color: grey;
+    background-color: white;
     margin: auto;
 }
 
@@ -71,15 +71,20 @@ input {
 
 form
 {
-    width: 240px;
-    text-align: center;
+    height: 800px;
+    width: 450px;
+    background-color: white;
+    opacity: .7;
+    color: black;
+    padding: 20px;
+    margin: 70px auto;
 }
 
 /* a#currentTab {
     border-bottom:1px solid #fff;
 }
 
-a { color: black; text-decoration:none;
+a {color: black; text-decoration:none;
     padding:5px; border: 1px solid #aaa;
 }
 
@@ -87,10 +92,11 @@ a:hover { background: #ccc } */
 
 td { border: 1px solid #ccc; padding: 3px }
 th { border: 1px solid #ccc; padding: 3px; 
-    background: rgba(44, 62, 80, 0.7); color: white }
+    background: rgba(44, 62, 80, 0.7); color: black }
 
 .navigator { 
 	border-bottom:1px solid #aaa; 
-	width:300px; 
-	padding:5px
+	width:450px; 
+	padding:20px;
+`	margin: 70px auto;
 }
