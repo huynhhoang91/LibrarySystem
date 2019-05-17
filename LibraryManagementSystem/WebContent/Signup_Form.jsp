@@ -20,7 +20,7 @@
     <div class=wrapper>
 <header>
 
-         <nav sytle="color:black" class="navbar navbar-Inverse">
+         <nav style="color:black" class="navbar navbar-Inverse">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand">ONLINE LIBRARY SYSTEM</a>
@@ -82,5 +82,6 @@
             </form>
         </div>
 </section>
+</div>
 </body>
 </html>
