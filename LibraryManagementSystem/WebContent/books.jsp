@@ -5,14 +5,8 @@
 <%@page import="java.util.*" %>
 <%@page import="java.text.DateFormat" %>
 <%@page import="java.text.SimpleDateFormat" %>
-<head>
-<title>Search All Books</title>
-    <link href="CSS/style.css" rel="stylesheet" type="text/css">
-    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8" />
-<body>
-<div class=wrapper>
 
-        <%@ include file="header.html" %>
+<%@ include file="header.html" %>
 <%
 	String username = (String)session.getAttribute("username");
 
@@ -24,7 +18,6 @@
 	Date rDate = calendar.getTime();
 	//String returnDate = dateFormat.format(rDate);
 
-	out.println("Welcome " + username + "!");
 	Enumeration names = request.getParameterNames();
 	if(names.hasMoreElements()){
 		String nope = (String)names.nextElement();
