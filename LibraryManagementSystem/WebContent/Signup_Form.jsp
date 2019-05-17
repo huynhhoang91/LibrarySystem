@@ -3,18 +3,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Student Registration</title>
+<link href="CSS/registration.css" rel="stylesheet" type="text/css">
     <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8" />
-    <link href="CSS/registration.css" rel="stylesheet" type="text/css">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+        section
+        {
+            margin-top: -20px;
+        }
+    </style>
 </head>
 <body>
+    <div class=wrapper>
+<header>
 
-<%@ include file="header.html" %>
+         <nav sytle="color:black" class="navbar navbar-Inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">ONLINE LIBRARY SYSTEM</a>
+            </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="books.jsp">SEARCH_BOOKS</a></li>
+                    <li><a href="user_books.jsp">MY_BOOKS</a></li>
+            	</ul>
+            	<ul class="nav navbar-nav navbar-right">        
+                    <li><a href="Login_Form.jsp"><span class="glyphicon glyphicon-log-in"> STUDENT_LOGIN</span></a></li>
+                    <li><a href="Admin_Login.jsp"><span class="glyphicon glyphicon-log-in"> ADMIN_LOGIN</span></a></li>
+                    <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-out"> LOGOUT</span></a></li>
+            	</ul>
+            </div>
+            </nav>
 
+        </header>
 <section>
     <div class="box">
         <form method="post" action="Signup_Form.jsp">
@@ -54,7 +78,7 @@
                 type="submit" 
                 value="Signup" 
                 style="color: black; width: 70px; height: 30px"></p>
-            Already have an account?<a href="login.html">&nbsp;Log In</a>
+            Already have an account?<a href="Login_Form.jsp">&nbsp;Log In</a>
             </form>
         </div>
 </section>
