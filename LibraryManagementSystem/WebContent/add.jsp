@@ -2,13 +2,6 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head>
-<title>Add Books</title>
-<link href="CSS/style.css" rel="stylesheet" type="text/css">
-<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8" />
-</head>
-<body>
-<div class=wrapper>
 
 <%@ include file="header.html" %>
 
