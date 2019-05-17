@@ -4,14 +4,6 @@
 <%@page import="java.util.*" %>
 
 <html>
-<head>
-<title>Delete Books</title>
-<link href="CSS/style.css" rel="stylesheet" type="text/css">
-    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8" />
-
-</head>
-<body>
-<div class=wrapper>
 
 <%@ include file="header.html" %>
 <%
