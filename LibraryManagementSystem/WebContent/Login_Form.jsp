@@ -2,18 +2,42 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Student Login</title>
+<link href="CSS/student_login.css" rel="stylesheet" type="text/css">
     <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8" />
-    <link href="CSS/student_login.css" rel="stylesheet" type="text/css">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-</head>
 
+    <style type="text/css">
+        section
+        {
+            margin-top: -20px;
+        }
+    </style>
+</head>
 <body>
-<%@ include file="header.html" %>
+    <div class=wrapper>
+<header>
+
+         <nav sytle="color:black" class="navbar navbar-Inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">ONLINE LIBRARY SYSTEM</a>
+            </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="books.jsp">SEARCH_BOOKS</a></li>
+                    <li><a href="user_books.jsp">MY_BOOKS</a></li>
+            	</ul>
+            	<ul class="nav navbar-nav navbar-right">        
+                    <li><a href="Login_Form.jsp"><span class="glyphicon glyphicon-log-in"> STUDENT_LOGIN</span></a></li>
+                    <li><a href="Admin_Login.jsp"><span class="glyphicon glyphicon-log-in"> ADMIN_LOGIN</span></a></li>
+                    <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-out"> LOGOUT</span></a></li>
+            	</ul>
+            </div>
+            </nav>
+
+        </header>
 	<section>
         <div class="box">
             <form method="post" action="Login_Form.jsp">
@@ -47,7 +71,7 @@
                     type="submit" 
                     value="Login" 
                     style="color: black; width: 70px; height: 30px"></p>
-                Don't have account?<a href="signup.html">&nbsp;Sign Up</a>
+                Don't have account?<a href="Signup_Form.jsp">&nbsp;Sign Up</a>
             </form>
         </div>
 	</section>
